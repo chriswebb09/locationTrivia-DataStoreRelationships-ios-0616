@@ -7,6 +7,7 @@
 //
 
 #import "FISLocationsTableViewController.h"
+#import "FISAddTriviaViewController.h"
 #import "FISLocationsDataStore.h"
 
 @interface FISLocationsTableViewController()
@@ -56,6 +57,15 @@
      cell.textLabel.text = cellLocation.name;
      return cell;
  }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FISAddTriviaViewController *addTriviaVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"addTrivia"]) {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        addTriviaVC.passedTrivium = self.store.locations[indexPath.row];
+    }
+    
+    
+}
 
 
 /*

@@ -104,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90N-Wh-PJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589" y="306"/>
+            <point key="canvasLocation" x="1499" y="96"/>
         </scene>
         <!--Locations-->
         <scene sceneID="kv4-EI-Mt2">
@@ -131,6 +131,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Q9p-rS-Wjz" kind="show" identifier="addTrivia" id="obI-IV-Tnw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -149,6 +152,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8m1-C6-Lq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="738" y="306"/>
+        </scene>
+        <!--Add Trivia View Controller-->
+        <scene sceneID="bKt-IC-g1c">
+            <objects>
+                <viewController id="Q9p-rS-Wjz" customClass="FISAddTriviaViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iRi-rt-uFv"/>
+                        <viewControllerLayoutGuide type="bottom" id="wrO-18-e6u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lpG-Qn-sdg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ur3-T4-Z3J">
+                                <rect key="frame" x="311" y="140" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xy8-Pv-JZd">
+                                <rect key="frame" x="284" y="264" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zR5-Kj-NEJ">
+                                <rect key="frame" x="309" y="375" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addTrivia:" destination="Q9p-rS-Wjz" eventType="touchUpInside" id="NJN-uH-hja"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="addTriviaTextField" destination="xy8-Pv-JZd" id="vLJ-7q-Da1"/>
+                        <outlet property="triviaText" destination="xy8-Pv-JZd" id="evJ-8i-hx0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0f8-q7-XVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492" y="753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8bJ-7f-k4r">
