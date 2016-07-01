@@ -1,5 +1,5 @@
 //
-//  FISAddLocationViewController.m
+//  FISLocationsTriviaViewController.m
 //  locationTrivia-dataStore
 //
 //  Created by Christopher Webb-Orenstein on 6/30/16.
@@ -7,26 +7,49 @@
 //
 
 #import "FISAddLocationViewController.h"
+#import "FISLocationsDataStore.h"
+#import "FISTrivium.h"
+#import "FISLocation.h"
 
 @interface FISAddLocationViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *triviumTextField;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) FISLocationsDataStore *store;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *latitudeField;
+@property (weak, nonatomic) IBOutlet UITextField *longitudeField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+//@property (strong, nonatomic) NSMutableArray *locations;
 @end
 
 @implementation FISAddLocationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.triviumTextField.accessibilityLabel = @"Trivium Text Field";
-    self.triviumTextField.accessibilityIdentifier = @"Trivium Text Field";
     
-    self.saveButton.accessibilityLabel = @"Save Button";
-    self.saveButton.accessibilityIdentifier = @"Save Button";
+    //FISLocationsDataStore *locationsDataStore = [FISLocationsDataStore sharedLocationsDataStore];
+    self.store = [FISLocationsDataStore sharedLocationsDataStore];
     
-    self.cancelButton.accessibilityLabel = @"Cancel Button";
-    self.cancelButton.accessibilityIdentifier = @"Cancel Button";
+    self.nameField.accessibilityIdentifier = @"nameField";
+    self.nameField.accessibilityLabel = @"nameField";
+    
+    self.latitudeField.accessibilityLabel = @"latitudeField";
+    self.latitudeField.accessibilityIdentifier = @"latitudeField";
+    
+    self.longitudeField.accessibilityLabel = @"longitudeField";
+    self.longitudeField.accessibilityIdentifier = @"longitudeField";
+    
+    self.saveButton.accessibilityLabel = @"saveButton";
+    self.saveButton.accessibilityIdentifier = @"saveButton";
+    
+    self.cancelButton.accessibilityLabel = @"cancelButton";
+    self.cancelButton.accessibilityIdentifier = @"cancelButton";
+    
+    self.navigationItem.rightBarButtonItem.accessibilityLabel = @"addButton";
+    self.navigationItem.rightBarButtonItem.accessibilityIdentifier = @"addButton";
+    
+    //locationsDataStore.locations;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -34,15 +57,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)cancelButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)saveButtonTapped:(id)sender {
-    FISTrivium *trivia = [[FISTrivium alloc]init];
-    trivia.likes = 0;
-}
 
+- (IBAction)saveButtonTapped:(id)sender {
+    FISLocation *newLocation = [[FISLocation alloc]init];
+    newLocation.name = self.nameField.text;
+    newLocation.latitude = [self.latitudeField.text floatValue];
+    newLocation.longitude = [self.longitudeField.text floatValue];
+    
+    [self.store.locations addObject:newLocation];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

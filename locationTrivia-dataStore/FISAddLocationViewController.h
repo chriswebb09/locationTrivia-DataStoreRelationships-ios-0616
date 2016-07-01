@@ -1,5 +1,5 @@
 //
-//  FISAddLocationViewController.h
+//  FISLocationsTriviaViewController.h
 //  locationTrivia-dataStore
 //
 //  Created by Christopher Webb-Orenstein on 6/30/16.
@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FISTrivium.h"
+#import "FISLocation.h"
+#import "FISLocationsDataStore.h"
 
 @interface FISAddLocationViewController : UIViewController
+//@property (strong, nonatomic) NSMutableArray *locations;
+
 
 @end
